@@ -1,0 +1,130 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "rating": 5,
+      "review": "Pengalaman luar biasa! Kos yang nyaman dengan fasilitas lengkap. Lokasi strategis dekat kampus dan harga terjangkau. Tim customer service sangat responsif dan membantu.",
+      "avatar": "/images/avatar-review.svg",
+      "username": "Sarah Maharani",
+      "jobdesk": "Mahasiswa UI",
+      "isVerified": true,
+      "listingTitle": "Kos Premium Menteng",
+      "date": "2024-01-15",
+      "isFeatured": true
+    },
+    {
+      "id": 2,
+      "rating": 4,
+      "review": "Apartemen bagus dengan view yang indah. Fasilitas lengkap dan keamanan 24 jam. Harga sesuai dengan kualitas yang diberikan. Recommended!",
+      "avatar": "/images/avatar-review.svg",
+      "username": "Budi Santoso",
+      "jobdesk": "Software Engineer",
+      "isVerified": true,
+      "listingTitle": "Apartemen Sudirman",
+      "date": "2024-01-10",
+      "isFeatured": false
+    },
+    {
+      "id": 3,
+      "rating": 5,
+      "review": "Sangat puas dengan pelayanan Nidejia. Proses sewa mudah dan transparan. Kos yang saya pilih sesuai dengan deskripsi dan foto yang ditampilkan.",
+      "avatar": "/images/avatar-review.svg",
+      "username": "Ahmad Rizki",
+      "jobdesk": "Freelancer",
+      "isVerified": true,
+      "listingTitle": "Kos Modern Kemang",
+      "date": "2024-01-08",
+      "isFeatured": true
+    },
+    {
+      "id": 4,
+      "rating": 4,
+      "review": "Apartemen dengan fasilitas gym dan kolam renang. Lokasi dekat mall dan transportasi umum. Harga kompetitif untuk fasilitas yang diberikan.",
+      "avatar": "/images/avatar-review.svg",
+      "username": "Lisa Putri",
+      "jobdesk": "Marketing Manager",
+      "isVerified": true,
+      "listingTitle": "Apartemen Thamrin",
+      "date": "2024-01-05",
+      "isFeatured": false
+    },
+    {
+      "id": 5,
+      "rating": 5,
+      "review": "Kos dengan WiFi cepat dan AC di setiap kamar. Keamanan terjaga dengan baik. Owner sangat ramah dan membantu. Worth it banget!",
+      "avatar": "/images/avatar-review.svg",
+      "username": "Rizky Pratama",
+      "jobdesk": "Mahasiswa ITB",
+      "isVerified": true,
+      "listingTitle": "Kos Nyaman Bandung",
+      "date": "2024-01-03",
+      "isFeatured": true
+    },
+    {
+      "id": 6,
+      "rating": 4,
+      "review": "Apartemen dengan view city yang menakjubkan. Fasilitas lengkap dan modern. Harga sesuai dengan kualitas yang diberikan. Akan kembali lagi!",
+      "avatar": "/images/avatar-review.svg",
+      "username": "Dewi Sari",
+      "jobdesk": "Graphic Designer",
+      "isVerified": true,
+      "listingTitle": "Apartemen Skyline",
+      "date": "2024-01-01",
+      "isFeatured": false
+    },
+    {
+      "id": 7,
+      "rating": 5,
+      "review": "Pelayanan yang sangat memuaskan! Proses booking mudah dan cepat. Kos yang saya pilih sesuai dengan ekspektasi. Fasilitas lengkap dan nyaman.",
+      "avatar": "/images/avatar-review.svg",
+      "username": "Maya Sari",
+      "jobdesk": "Content Creator",
+      "isVerified": true,
+      "listingTitle": "Kos Creative Hub",
+      "date": "2023-12-28",
+      "isFeatured": true
+    },
+    {
+      "id": 8,
+      "rating": 4,
+      "review": "Apartemen dengan desain modern dan minimalis. Lokasi strategis dengan akses mudah ke berbagai tempat. Harga reasonable untuk kualitas yang diberikan.",
+      "avatar": "/images/avatar-review.svg",
+      "username": "Andi Wijaya",
+      "jobdesk": "Product Manager",
+      "isVerified": true,
+      "listingTitle": "Apartemen Modern",
+      "date": "2023-12-25",
+      "isFeatured": false
+    },
+    {
+      "id": 9,
+      "rating": 5,
+      "review": "Kos dengan konsep co-living yang menarik. Komunitas yang baik dan fasilitas lengkap. Perfect untuk mahasiswa yang mencari pengalaman hidup yang berbeda.",
+      "avatar": "/images/avatar-review.svg",
+      "username": "Rina Sari",
+      "jobdesk": "Student",
+      "isVerified": true,
+      "listingTitle": "Co-living Space",
+      "date": "2023-12-20",
+      "isFeatured": true
+    },
+    {
+      "id": 10,
+      "rating": 4,
+      "review": "Apartemen dengan view pantai yang menakjubkan. Fasilitas lengkap dan keamanan terjaga. Harga sesuai dengan lokasi dan fasilitas yang diberikan.",
+      "avatar": "/images/avatar-review.svg",
+      "username": "John Doe",
+      "jobdesk": "Business Analyst",
+      "isVerified": true,
+      "listingTitle": "Beachfront Apartment",
+      "date": "2023-12-15",
+      "isFeatured": false
+    }
+  ],
+  "statistics": {
+    "averageRating": 4.6,
+    "totalReviews": 1250,
+    "satisfactionRate": 98,
+    "verifiedReviews": 1100
+  }
+}
