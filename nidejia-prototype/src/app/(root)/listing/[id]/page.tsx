@@ -19,6 +19,14 @@ function Detail({ params }: { params: { id: string } }) {
   const { data } = useGetDetailListingQuery(params.id);
 
   const listing: Listing | undefined = useMemo(() => data?.data, [data]);
+
+  // Debug: Log listing data untuk melihat struktur
+  console.log('Listing detail data:', {
+    hasData: !!data,
+    listing,
+    attachments: listing?.attachments,
+    storageUrl: process.env.NEXT_PUBLIC_STORAGE_BASE_URL
+  });
   return (
     <main>
       <section

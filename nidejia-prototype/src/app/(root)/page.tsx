@@ -73,9 +73,11 @@ function Home() {
                 transitionDuration={750}
                 playOnce={false}
               >
-                <Button variant="default" size="hero">
-                  Explore
-                </Button>
+                <Link href="/explore">
+                  <Button variant="default" size="hero">
+                    Explore
+                  </Button>
+                </Link>
               </GlareHover>
             </div>
           </div>
@@ -327,9 +329,11 @@ function Home() {
         
         {/* View All Testimonials Button */}
         <div className="text-center mt-8">
-          <Button variant="default" size="button" className="shadow-button">
-            <Link href="/testimonials">View All Testimonials</Link>
-          </Button>
+          <Link href="/testimonials">
+            <Button variant="default" size="button" className="shadow-button">
+              View All Testimonials
+            </Button>
+          </Link>
         </div>
       </section>
     </main>

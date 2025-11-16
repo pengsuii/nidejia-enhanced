@@ -7,6 +7,7 @@ import { moneyFormat } from "@/lib/utils";
 import { useCheckAvailabilityMutation } from "@/services/transaction.service";
 import moment from "moment";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 
@@ -54,19 +55,27 @@ function BookingSection({ id,slug,price }: BookingSectionProps) {
     } catch (error: any) {
       if (error.status === 401) {
         toast({
-          title : "Something when wrong",
-          description: "Please login first",
+          title : "Login Diperlukan",
+          description: "Silakan login terlebih dahulu untuk melakukan booking",
           variant: "destructive",
           action: (
-          <link href={`/sign-in?callbackUrl=${window.location.href}`}>
-            sign in
-          </link>
+            <Link href={`/sign-in?callbackUrl=${window.location.href}`}>
+              <Button variant="outline" size="button">
+                Login
+              </Button>
+            </Link>
           )
         });
       } else if(error.status === 404){
         toast({
-          title: "Something when wrong",
-          description: error.data.message,
+          title: "Terjadi Kesalahan",
+          description: error.data.message || "Listing tidak ditemukan",
+          variant: "destructive",
+        })
+      } else {
+        toast({
+          title: "Terjadi Kesalahan",
+          description: "Silakan coba lagi atau hubungi customer service",
           variant: "destructive",
         })
       }

@@ -23,16 +23,22 @@ function CardDeals({
       <figure className="relative">
         {image ? (
           <Image
-            src={`${process.env.NEXT_PUBLIC_STORAGE_BASE_URL}/${image}`}
+            src={image.startsWith('http') ? image : `${process.env.NEXT_PUBLIC_STORAGE_BASE_URL || 'http://127.0.0.1:8000/storage'}/${image}`}
             alt={title}
             height={0}
             width={0}
             className="w-[220px] h-[310px] xl:w-[260px] xl:h-[350px] rounded-3xl object-cover bg-gray-300"
             unoptimized
             priority={priority}
+            onError={(e) => {
+              console.log('Image load error:', image);
+              e.currentTarget.style.display = 'none';
+            }}
           />
         ) : (
-          <div className="w-[220px] h-[310px] xl:w-[260px] xl:h-[350px] rounded-3xl object-cover bg-gray-300" />
+          <div className="w-[220px] h-[310px] xl:w-[260px] xl:h-[350px] rounded-3xl object-cover bg-gray-300 flex items-center justify-center">
+            <span className="text-gray-500 text-sm">No Image</span>
+          </div>
         )}
 
         <div className="absolute flex flex-col p-5 top-0 rounded-3xl w-[220px] h-[310px] xl:w-[260px] xl:h-[350px] text-white bg-gradient-to-t from-gradient-black to-transparent to-[45%]">

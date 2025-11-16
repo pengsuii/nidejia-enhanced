@@ -39,9 +39,11 @@ export default function AboutPage() {
             Kami membantu siapa pun menemukan ruang hidup dan kerja yang nyaman, aman, dan terjangkau.
           </p>
           <div className="mt-6">
-            <Button variant="default" size="button" className="shadow-button">
-              <Link href="/featured">Mulai Jelajahi</Link>
-            </Button>
+            <Link href="/featured">
+              <Button variant="default" size="button" className="shadow-button">
+                Mulai Jelajahi
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -140,12 +142,16 @@ export default function AboutPage() {
                 Ingin mulai mencari hunian atau mendaftarkan properti Anda? Mari wujudkan ruang hidup yang lebih nyaman.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="default" size="button" className="shadow-button">
-                  <Link href="/featured">Cari Properti</Link>
-                </Button>
-                <Button variant="third" size="button">
-                  <Link href="/sign-in">Jadi Mitra</Link>
-                </Button>
+                <Link href="/featured">
+                  <Button variant="default" size="button" className="shadow-button">
+                    Cari Properti
+                  </Button>
+                </Link>
+                <Link href="/sign-in">
+                  <Button variant="third" size="button">
+                    Jadi Mitra
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
