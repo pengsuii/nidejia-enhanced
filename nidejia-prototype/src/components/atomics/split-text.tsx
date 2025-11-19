@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, type CSSProperties } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText as GSAPSplitText } from 'gsap/SplitText';
@@ -19,7 +19,7 @@ interface SplitTextProps {
   to?: Record<string, any>;
   threshold?: number;
   rootMargin?: string;
-  textAlign?: string;
+  textAlign?: CSSProperties["textAlign"];
   tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
   onLetterAnimationComplete?: () => void;
 }
@@ -157,7 +157,7 @@ const SplitText = ({
   );
 
   const renderTag = () => {
-    const style = {
+    const style: CSSProperties = {
       textAlign,
       overflow: 'hidden',
       display: 'inline-block',

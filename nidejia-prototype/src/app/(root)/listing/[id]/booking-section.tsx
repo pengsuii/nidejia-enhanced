@@ -37,7 +37,7 @@ function BookingSection({ id,slug,price }: BookingSectionProps) {
       grandTotal = subTotal * tax;
     }
     return {totalDays, subTotal, tax, grandTotal};
-  },[startDate,endDate]);
+  },[startDate,endDate,price]);
 
   // `/listing/${id}/checkout`
   const handleBook = async() => {

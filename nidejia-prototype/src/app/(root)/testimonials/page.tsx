@@ -91,7 +91,7 @@ export default function TestimonialsPage() {
             Share Your Experience
           </h2>
           <p className="text-subtitle mb-6 max-w-2xl mx-auto">
-            Have you stayed with us? We'd love to hear about your experience and help other customers make informed decisions.
+            Have you stayed with us? We&apos;d love to hear about your experience and help other customers make informed decisions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="default" size="button" className="shadow-button">

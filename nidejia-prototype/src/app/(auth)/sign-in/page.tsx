@@ -16,6 +16,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -27,7 +28,7 @@ const schema = yup.object().shape({
 
 type FormData = yup.InferType<typeof schema>;
 
-function SignIn() {
+function SignInContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { toast } = useToast();
@@ -162,4 +163,16 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default function SignIn() {
+  return (
+    <Suspense
+      fallback={
+        <div className="px-6 py-24 lg:px-28 h-screen flex items-center justify-center">
+          <p className="text-secondary">Loading sign-in...</p>
+        </div>
+      }
+    >
+      <SignInContent />
+    </Suspense>
+  );
+}

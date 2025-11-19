@@ -3,21 +3,29 @@ import { Listing as ListingInterface } from "@/interfaces/listing";
 import Image from "next/image";
 
 function Listing({listing}: {listing: ListingInterface}) {
+  const firstAttachment = listing.attachments?.[0];
+  const attachmentSrc =
+    firstAttachment
+      ? firstAttachment.startsWith("http")
+        ? firstAttachment
+        : `${process.env.NEXT_PUBLIC_STORAGE_BASE_URL || "http://127.0.0.1:8000/storage"}/${firstAttachment}`
+      : undefined;
+
   return (
     <div className="w-full max-w-[460px] h-fit p-[30px] space-y-5 bg-white rounded-[30px] shadow-indicator border border-border">
-      {listing?.attachments?.[0] && (
+      {attachmentSrc && (
         <Image
-        src={listing.attachments[0]?.startsWith('http') ? listing.attachments[0] : `${process.env.NEXT_PUBLIC_STORAGE_BASE_URL || 'http://127.0.0.1:8000/storage'}/${listing.attachments[0]}`}
-        alt="image-1"
-        height={0}
-        width={0}
-        className="w-full h-[220px] rounded-[30px]"
-        unoptimized
-        onError={(e) => {
-          console.log('Checkout listing image error:', listing.attachments[0]);
-          e.currentTarget.style.display = 'none';
-        }}
-      />
+          src={attachmentSrc}
+          alt="image-1"
+          height={0}
+          width={0}
+          className="w-full h-[220px] rounded-[30px]"
+          unoptimized
+          onError={(e) => {
+            console.log("Checkout listing image error:", firstAttachment);
+            e.currentTarget.style.display = "none";
+          }}
+        />
       )}
       <h1 className="font-bold text-[22px] leading-[33px] text-secondary">
         {listing.title}

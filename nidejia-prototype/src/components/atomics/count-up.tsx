@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 
 interface CountUpProps {
   from?: number;
@@ -38,7 +38,7 @@ const CountUp: React.FC<CountUpProps> = ({
     return num.toString();
   };
 
-  const animate = () => {
+  const animate = useCallback(() => {
     if (isAnimating) return;
     
     setIsAnimating(true);
@@ -68,7 +68,7 @@ const CountUp: React.FC<CountUpProps> = ({
     };
 
     updateValue();
-  };
+  }, [from, to, duration, onComplete, isAnimating]);
 
   useEffect(() => {
     if (startOnMount) {
@@ -89,7 +89,7 @@ const CountUp: React.FC<CountUpProps> = ({
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [from, to, duration, startOnMount, delay]);
+  }, [startOnMount, delay, animate]);
 
   // Cleanup on unmount
   useEffect(() => {
