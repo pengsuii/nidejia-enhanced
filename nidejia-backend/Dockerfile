@@ -11,10 +11,12 @@ RUN apk add --no-cache \
     unzip \
     nginx \
     supervisor \
-    sqlite-dev
+    sqlite-dev \
+    icu-dev \
+    icu-libs
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql pdo_sqlite zip exif pcntl gd
+RUN docker-php-ext-install pdo_mysql pdo_sqlite zip exif pcntl gd intl
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
