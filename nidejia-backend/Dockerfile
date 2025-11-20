@@ -10,7 +10,8 @@ RUN apk add --no-cache \
     zip \
     unzip \
     nginx \
-    supervisor
+    supervisor \
+    sqlite-dev
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql pdo_sqlite zip exif pcntl gd
