@@ -1,5 +1,5 @@
-# Dockerfile untuk Laravel - Alternative deployment method
-FROM php:8.2-fpm-alpine
+# Dockerfile untuk Laravel - Simplified for Railway
+FROM php:8.2-cli-alpine
 
 # Install dependencies
 RUN apk add --no-cache \
@@ -9,8 +9,6 @@ RUN apk add --no-cache \
     libzip-dev \
     zip \
     unzip \
-    nginx \
-    supervisor \
     sqlite-dev \
     icu-dev \
     icu-libs
@@ -34,71 +32,37 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction --no-script
 COPY . .
 
 # Set permissions
-RUN chown -R www-data:www-data /app \
-    && chmod -R 755 /app/storage \
-    && chmod -R 755 /app/bootstrap/cache
+RUN chmod -R 755 /app/storage \
+    && chmod -R 755 /app/bootstrap/cache \
+    && mkdir -p /app/database \
+    && chmod -R 755 /app/database
 
-# Copy nginx config
-COPY <<EOF /etc/nginx/http.d/default.conf
-server {
-    listen 80;
-    server_name _;
-    root /app/public;
+# Create entrypoint script
+COPY <<EOF /entrypoint.sh
+#!/bin/sh
+set -e
 
-    add_header X-Frame-Options "SAMEORIGIN";
-    add_header X-Content-Type-Options "nosniff";
+# Create database file if it doesn't exist
+mkdir -p /app/database
+touch /app/database/database.sqlite
+chmod 666 /app/database/database.sqlite
 
-    index index.php;
+# Run migrations
+php artisan migrate --force || true
 
-    charset utf-8;
+# Cache config and routes (non-blocking)
+php artisan config:cache || true
+php artisan route:cache || true
 
-    location / {
-        try_files \$uri \$uri/ /index.php?\$query_string;
-    }
-
-    location = /favicon.ico { access_log off; log_not_found off; }
-    location = /robots.txt  { access_log off; log_not_found off; }
-
-    error_page 404 /index.php;
-
-    location ~ \.php$ {
-        fastcgi_pass 127.0.0.1:9000;
-        fastcgi_param SCRIPT_FILENAME \$realpath_root\$fastcgi_script_name;
-        include fastcgi_params;
-    }
-
-    location ~ /\.(?!well-known).* {
-        deny all;
-    }
-}
+# Start Laravel development server
+exec php artisan serve --host=0.0.0.0 --port=\${PORT:-8000}
 EOF
 
-# Copy supervisor config
-COPY <<EOF /etc/supervisord.conf
-[supervisord]
-nodaemon=true
-
-[program:php-fpm]
-command=php-fpm
-stdout_logfile=/dev/stdout
-stdout_logfile_maxbytes=0
-stderr_logfile=/dev/stderr
-stderr_logfile_maxbytes=0
-
-[program:nginx]
-command=nginx -g 'daemon off;'
-stdout_logfile=/dev/stdout
-stdout_logfile_maxbytes=0
-stderr_logfile=/dev/stderr
-stderr_logfile_maxbytes=0
-EOF
+RUN chmod +x /entrypoint.sh
 
 # Expose port
-EXPOSE 80
+EXPOSE 8000
 
-# Run migrations and start services
-CMD php artisan migrate --force && \
-    php artisan config:cache && \
-    php artisan route:cache && \
-    supervisord -c /etc/supervisord.conf
+# Run entrypoint script
+CMD ["/entrypoint.sh"]
 
