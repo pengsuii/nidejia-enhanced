@@ -2,6 +2,7 @@
 import { Button } from "@/components/atomics/button";
 import GlareHover from "@/components/atomics/glare-hover";
 import { Input } from "@/components/atomics/input";
+import ScrollFloat from "@/components/atomics/scroll-float";
 import { Separator } from "@/components/atomics/separator";
 import SplitText from "@/components/atomics/split-text";
 import Title from "@/components/atomics/title";
@@ -10,7 +11,6 @@ import CardIndicator from "@/components/molecules/card/card-indicator";
 import CardPurpose from "@/components/molecules/card/card-purpose";
 import CardReview from "@/components/molecules/card/card-review";
 import ListingShowcase from "@/components/molecules/listing/listing-showcase";
-import ScrollFloat from "@/components/atomics/scroll-float";
 import { CategoriesProps } from "@/interfaces/landing-page";
 import categories from "@/json/categories.json";
 import Image from "next/image";
@@ -162,7 +162,7 @@ function Home() {
               >
                 Categories
               </ScrollFloat>
-              <h2 className="text-base leading-6 text-subtitle">We provide everything</h2>
+              <h2 className="text-base leading-6 text-subtitle">We provide All</h2>
             </div>
             <div>
               <Button variant="default" size="button" className="shadow-button">
